@@ -24,6 +24,7 @@ for (let i = 0; i < resolution; i++) {
         newSquare.classList = "pixel";
         //add hover event that paint the square
         newSquare.addEventListener('mouseenter', mouseHover)
+        newSquare.addEventListener('mousedown', mouseHover)
         newSquare.addEventListener('dragstart', (e) => { e.preventDefault() }); // disable drag event
 
         container.appendChild(newSquare);
