@@ -23,8 +23,8 @@ for (let i = 0; i < resolution; i++) {
         newSquare = document.createElement('div');
         newSquare.classList = "pixel";
         //add hover event that paint the square
-        newSquare.addEventListener('mouseenter', mouseHover)
-        newSquare.addEventListener('mousedown', mouseHover)
+        newSquare.addEventListener('mouseenter', mouseHover) // paint a pixel when mouse clicks and enter a pixel area
+        newSquare.addEventListener('mousedown', mouseHover) // paint a single pixel when clicked
         newSquare.addEventListener('dragstart', (e) => { e.preventDefault() }); // disable drag event
 
         container.appendChild(newSquare);
@@ -39,9 +39,13 @@ const clearButton = document.querySelector('#clear');
 clearButton.addEventListener('click', clear);
 
 const colorPicker = document.querySelector('#colorpicker');
-
-function toggleEraser(e){
+function turnoffButton(button){
+    button.value = 'off';
+    button.classList = '';
+}
+function toggleButton(e){
     if (e.target.value === "off"){
+        document.querySelectorAll('#tools > button').forEach(turnoffButton);
         e.target.value = 'on';
         e.target.classList = 'clicked';
     }else if (e.target.value === 'on'){
@@ -50,7 +54,11 @@ function toggleEraser(e){
     } else {console.log('eraser valueError')}
 }
 const eraser = document.querySelector('#eraser');
-eraser.addEventListener('click', toggleEraser);
+eraser.addEventListener('click', toggleButton);
+const shade = document.querySelector('#shade');
+shade.addEventListener('click', toggleButton);
+const color = document.querySelector('#color');
+color.addEventListener('click', toggleButton);
 
 // asdasf
 
