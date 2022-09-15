@@ -14,6 +14,15 @@ function darker(e){
     e.target.style.backgroundColor = `rgb(${rgbNumbers[0]}, ${rgbNumbers[1]}, ${rgbNumbers[2]})`;
 }
 
+function lighter(e){
+    if (e.target.style.backgroundColor === ''){
+        e.target.style.backgroundColor = 'rgb(255, 255, 255)';
+    }
+    let rgbNumbers = e.target.style.backgroundColor.slice(4,-1).split(', ');
+    rgbNumbers.forEach((x, i, rgbNumbers) => rgbNumbers[i] = Math.min(parseInt(x) + 20, 255));
+    e.target.style.backgroundColor = `rgb(${rgbNumbers[0]}, ${rgbNumbers[1]}, ${rgbNumbers[2]})`;
+}
+
 function mouseHover(e){
     //break if mouse is not clicked
     if (e.buttons !== 1) {
@@ -22,6 +31,8 @@ function mouseHover(e){
         e.target.style.backgroundColor = '';
     } else if (shade.value === 'on'){
         darker(e);
+    } else if (lighten.value === 'on'){
+        lighter(e);
     } else if(color.value === 'on'){ 
         e.target.style.backgroundColor = colorPicker.value;
     }
@@ -60,14 +71,15 @@ function toggleButton(e){
         e.target.value = 'on';
         e.target.classList = 'clicked';
     }else if (e.target.value === 'on'){
-        e.target.value = 'off';
-        e.target.classList = '';
-    } else {console.log('eraser valueError')}
+        return;
+    } else {console.log('button valueError')}
 }
 const eraser = document.querySelector('#eraser');
 eraser.addEventListener('click', toggleButton);
 const shade = document.querySelector('#shade');
 shade.addEventListener('click', toggleButton);
+const lighten = document.querySelector('#lighten');
+lighten.addEventListener('click', toggleButton);
 const color = document.querySelector('#color');
 color.addEventListener('click', toggleButton);
 
