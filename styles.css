@@ -65,6 +65,14 @@ body{
     padding: 4px 12px;
 }
 
+#colorpicker{
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    min-width: 70px;
+    min-height: 32px;
+}
+
 #footer{
     text-align: center;
     width: 100vw;
