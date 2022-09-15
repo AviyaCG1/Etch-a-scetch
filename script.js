@@ -1,5 +1,5 @@
 
-const resolution = 16; // determine the number of squares in each row
+const resolution = 60; // determine the number of squares in each row
 const gridSize = 400;
 const container = document.querySelector("#grid");
 container.style = `grid-template-columns: repeat(${resolution}, 1fr); 
@@ -83,7 +83,6 @@ lighten.addEventListener('click', toggleButton);
 const color = document.querySelector('#color');
 color.addEventListener('click', toggleButton);
 
-// asdasf
 
 
 
