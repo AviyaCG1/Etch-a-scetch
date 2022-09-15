@@ -5,13 +5,24 @@ const container = document.querySelector("#grid");
 container.style = `grid-template-columns: repeat(${resolution}, 1fr); 
                     grid-template-columns: repeat(${resolution}, 1fr);`;
 
+function darker(e){
+    if (e.target.style.backgroundColor === ''){
+        e.target.style.backgroundColor = 'rgb(255, 255, 255)';
+    }
+    let rgbNumbers = e.target.style.backgroundColor.slice(4,-1).split(', ');
+    rgbNumbers.forEach((x, i, rgbNumbers) => rgbNumbers[i] = Math.max(parseInt(x) - 20, 0));
+    e.target.style.backgroundColor = `rgb(${rgbNumbers[0]}, ${rgbNumbers[1]}, ${rgbNumbers[2]})`;
+}
+
 function mouseHover(e){
     //break if mouse is not clicked
     if (e.buttons !== 1) {
         return;
     }if (eraser.value === 'on'){
         e.target.style.backgroundColor = '';
-    } else{ 
+    } else if (shade.value === 'on'){
+        darker(e);
+    } else if(color.value === 'on'){ 
         e.target.style.backgroundColor = colorPicker.value;
     }
 }
