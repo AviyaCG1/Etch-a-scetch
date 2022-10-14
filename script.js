@@ -39,20 +39,29 @@ function mouseHover(e){
 }
 
 // create resolution**2 squares to fill the grid
-let newSquare;
-for (let i = 0; i < resolution; i++) {
-    for (let j = 0; j < resolution; j++) {
-        newSquare = document.createElement('div');
-        newSquare.classList = "pixel";
-        //add hover event that paint the square
-        newSquare.addEventListener('mouseenter', mouseHover) // paint a pixel when mouse clicks and enter a pixel area
-        newSquare.addEventListener('mousedown', mouseHover) // paint a single pixel when clicked
-        newSquare.addEventListener('dragstart', (e) => { e.preventDefault() }); // disable drag event
+function createPixels(){
+  //delete old pixels
+  document.querySelectorAll('#grid>div').forEach(pixel => {
+        if (pixel != undefined){
+            pixel.delete();
+        }
+    });
+  //create new pixels
+  let newSquare;
+  for (let i = 0; i < resolution; i++) {
+      for (let j = 0; j < resolution; j++) {
+          newSquare = document.createElement('div');
+          newSquare.classList = "pixel";
+          //add hover event that paint the square
+          newSquare.addEventListener('mouseenter', mouseHover) // paint a pixel when mouse clicks and enter a pixel area
+          newSquare.addEventListener('mousedown', mouseHover) // paint a single pixel when clicked
+          newSquare.addEventListener('dragstart', (e) => { e.preventDefault() }); // disable drag event
 
-        container.appendChild(newSquare);
-    }
+          container.appendChild(newSquare);
+      }
+  }
 }
-
+createPixels();
 // Tools buttons
 function clear(){
     document.querySelectorAll('.pixel').forEach((square) => square.style = '');
