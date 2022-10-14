@@ -42,9 +42,7 @@ function mouseHover(e){
 function createPixels(){
   //delete old pixels
   document.querySelectorAll('#grid>div').forEach(pixel => {
-        if (pixel != undefined){
-            pixel.delete();
-        }
+        container.removeChild(pixel);
     });
   //create new pixels
   let newSquare;
