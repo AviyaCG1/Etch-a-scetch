@@ -24,7 +24,7 @@ body{
 #grid{
     height: 400px; 
     width: 400px;
-    flex: none;
+    flex-shrink: 0;
     /* margin: auto; */
     
     display: grid; 
