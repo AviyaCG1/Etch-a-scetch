@@ -24,6 +24,7 @@ body{
 #grid{
     height: 400px; 
     width: 400px;
+    flex: none;
     /* margin: auto; */
     
     display: grid; 
